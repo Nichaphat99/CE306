@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>โปรแกรมแปลงสกุลเงิน</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f5f5f5;
+            padding: 30px;
+        }
+
+        .currency {
+            margin: 15px;
+        }
+
+        select,
+        input {
+            padding: 10px;
+            font-size: 16px;
+            margin: 5px;
+        }
+
+        input {
+            width: 150px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #dc3545;
+            color: white;
+        }
+
+        button:hover {
+            background-color: #c82333;
+        }
+
+        .box {
+            background: white;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 600px;
+            border-radius: 10px;
+        }
+
+        #history-list {
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>โปรแกรมแปลงสกุลเงิน</h1>
+
+    <!-- ช่องที่ 1 -->
+    <div class="currency">
+        <select id="currency-one">
+            <option value="USD">USD</option>
+            <option value="THB">THB</option>
+            <option value="EUR">EUR</option>
+        </select>
+
+        <input
+            type="number"
+            id="amount-one"
+            value="1"
+            min="0"
+        >
+    </div>
+
+
+    <!-- ช่องที่ 2 -->
+    <div class="currency">
+        <select id="currency-two">
+            <option value="USD">USD</option>
+            <option value="THB" selected>THB</option>
+            <option value="EUR">EUR</option>
+        </select>
+
+        <input
+            type="number"
+            id="amount-two"
+            value="35"
+            min="0"
+        >
+    </div>
+
+
+    <!-- ข้อ 4 แสดงอัตราแลกเปลี่ยน -->
+    <div class="box">
+
+        <p id="rate">
+            อัตราแลกเปลี่ยน: 1 USD = 35 THB
+        </p>
+
+        <p id="updated-time">
+            อัปเดตล่าสุด: -
+        </p>
+
+    </div>
+
+
+    <!-- ข้อ 3 ปุ่มล้างข้อมูล -->
+    <button id="reset-btn">
+        ล้างข้อมูล
+    </button>
+
+
+    <!-- ข้อ 2 ประวัติ -->
+    <div class="box">
+
+        <h2>ประวัติการแปลงเงิน</h2>
+
+        <ul id="history-list"></ul>
+
+    </div>
+
+
+    <script>
+
+        // =========================
+        // ตัวแปร
+        // =========================
+
+        const currencyOne =
+            document.getElementById("currency-one");
+
+        const currencyTwo =
+            document.getElementById("currency-two");
+
+        const amountOne =
+            document.getElementById("amount-one");
+
+        const amountTwo =
+            document.getElementById("amount-two");
+
+        const rateText =
+            document.getElementById("rate");
+
+        const updatedTime =
+            document.getElementById("updated-time");
+
+        const resetBtn =
+            document.getElementById("reset-btn");
+
+        const historyList =
+            document.getElementById("history-list");
+
+
+        // =========================
+        // อัตราแลกเปลี่ยน
+        // 1 USD = 35 THB
+        // =========================
+
+        const rates = {
+            USD: 1,
+            THB: 35,
+            EUR: 0.92
+        };
+
+
+        // =========================
+        // หาค่าอัตราแลกเปลี่ยน
+        // =========================
+
+        function getRate(from, to) {
+
+            return rates[to] / rates[from];
+
+        }
+
+
+        // =========================
+        // ข้อ 1
+        // amount-one → amount-two
+        // =========================
+
+        function calculateFromOne() {
+
+            const from = currencyOne.value;
+            const to = currencyTwo.value;
+
+            const amount = Number(amountOne.value);
+
+            if (amountOne.value === "") {
+
+                amountTwo.value = "";
+
+                return;
+            }
+
+            const rate = getRate(from, to);
+
+            const result = amount * rate;
+
+            amountTwo.value = result.toFixed(2);
+
+            updateRate(from, to);
+
+            saveHistory(
+                amount,
+                from,
+                result,
+                to
+            );
+        }
+
+
+        // =========================
+        // ข้อ 1
+        // amount-two → amount-one
+        // =========================
+
+        function calculateFromTwo() {
+
+            const from = currencyOne.value;
+            const to = currencyTwo.value;
+
+            const amount = Number(amountTwo.value);
+
+            if (amountTwo.value === "") {
+
+                amountOne.value = "";
+
+                return;
+            }
+
+            const rate = getRate(to, from);
+
+            const result = amount * rate;
+
+            amountOne.value = result.toFixed(2);
+
+            updateRate(from, to);
+
+            saveHistory(
+                result,
+                from,
+                amount,
+                to
+            );
+        }
+
+
+        // =========================
+        // ข้อ 4
+        // แสดงอัตราและเวลาล่าสุด
+        // =========================
+
+        function updateRate(from, to) {
+
+            const rate = getRate(from, to);
+
+            rateText.textContent =
+                `อัตราแลกเปลี่ยน: 1 ${from} = ${rate.toFixed(2)} ${to}`;
+
+            const now = new Date();
+
+            updatedTime.textContent =
+                `อัปเดตล่าสุด: ${now.toLocaleString("th-TH")}`;
+        }
+
+
+        // =========================
+        // ข้อ 2
+        // บันทึกประวัติ
+        // =========================
+
+        function saveHistory(
+            amountFrom,
+            currencyFrom,
+            amountTo,
+            currencyTo
+        ) {
+
+            let history =
+                JSON.parse(
+                    localStorage.getItem("currencyHistory")
+                ) || [];
+
+
+            const item = {
+
+                amountFrom: amountFrom,
+
+                currencyFrom: currencyFrom,
+
+                amountTo: amountTo,
+
+                currencyTo: currencyTo,
+
+                time: new Date().toLocaleString("th-TH")
+            };
+
+
+            // เพิ่มรายการใหม่ด้านบน
+            history.unshift(item);
+
+
+            // เก็บแค่ 10 รายการล่าสุด
+            history = history.slice(0, 10);
+
+
+            localStorage.setItem(
+                "currencyHistory",
+                JSON.stringify(history)
+            );
+
+
+            showHistory();
+        }
+
+
+        // =========================
+        // แสดงประวัติ
+        // =========================
+
+        function showHistory() {
+
+            const history =
+                JSON.parse(
+                    localStorage.getItem("currencyHistory")
+                ) || [];
+
+
+            historyList.innerHTML = "";
+
+
+            if (history.length === 0) {
+
+                const li =
+                    document.createElement("li");
+
+                li.textContent =
+                    "ยังไม่มีประวัติ";
+
+                historyList.appendChild(li);
+
+                return;
+            }
+
+
+            history.forEach(function(item) {
+
+                const li =
+                    document.createElement("li");
+
+                li.textContent =
+                    `${Number(item.amountFrom).toFixed(2)} ` +
+                    `${item.currencyFrom} → ` +
+                    `${Number(item.amountTo).toFixed(2)} ` +
+                    `${item.currencyTo} ` +
+                    `(${item.time})`;
+
+                historyList.appendChild(li);
+
+            });
+        }
+
+
+        // =========================
+        // ข้อ 3
+        // ล้างข้อมูล
+        // กลับเป็น 1 USD = 35 THB
+        // =========================
+
+        resetBtn.addEventListener(
+            "click",
+            function() {
+
+                currencyOne.value = "USD";
+
+                currencyTwo.value = "THB";
+
+                amountOne.value = "1";
+
+                amountTwo.value = "35";
+
+                updateRate("USD", "THB");
+
+            }
+        );
+
+
+        // =========================
+        // กรอกช่อง amount-one
+        // =========================
+
+        amountOne.addEventListener(
+            "input",
+            function() {
+
+                calculateFromOne();
+
+            }
+        );
+
+
+        // =========================
+        // กรอกช่อง amount-two
+        // =========================
+
+        amountTwo.addEventListener(
+            "input",
+            function() {
+
+                calculateFromTwo();
+
+            }
+        );
+
+
+        // =========================
+        // เปลี่ยนสกุลเงินช่องแรก
+        // =========================
+
+        currencyOne.addEventListener(
+            "change",
+            function() {
+
+                calculateFromOne();
+
+            }
+        );
+
+
+        // =========================
+        // เปลี่ยนสกุลเงินช่องสอง
+        // =========================
+
+        currencyTwo.addEventListener(
+            "change",
+            function() {
+
+                calculateFromOne();
+
+            }
+        );
+
+
+        // =========================
+        // เริ่มต้นโปรแกรม
+        // =========================
+
+        updateRate("USD", "THB");
+
+        showHistory();
+
+    </script>
+
+</body>
+</html>
