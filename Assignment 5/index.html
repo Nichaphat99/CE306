@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CAT WORLD | Home</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: "class"
+        };
+    </script>
+
+    <!-- CSS ของเรา -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-slate-950 text-white min-h-screen">
+
+    <!-- NAVBAR -->
+    <nav class="bg-slate-900 border-b border-fuchsia-500/30 sticky top-0 z-50">
+
+        <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+
+            <a href="index.html"
+               class="text-2xl font-black text-fuchsia-400">
+                🐾 CAT WORLD
+            </a>
+
+            <div class="hidden md:flex gap-6 font-bold">
+
+                <a href="index.html"
+                   class="text-fuchsia-400 hover:text-yellow-300">
+                    Home
+                </a>
+
+                <a href="cat-pop.html"
+                   class="hover:text-fuchsia-400 transition">
+                    🐱 Cat Pop!
+                </a>
+
+                <a href="cat-vs-mouse.html"
+                   class="hover:text-cyan-400 transition">
+                    🐭 Cat vs Mouse
+                </a>
+
+                <a href="about.html"
+                   class="hover:text-yellow-300 transition">
+                    How to Play
+                </a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- HERO -->
+    <main>
+
+        <section class="hero-section px-6 py-24">
+
+            <div class="max-w-6xl mx-auto text-center">
+
+                <div class="text-7xl mb-6 bounce-cat">
+                    🐱
+                </div>
+
+                <p class="text-fuchsia-400 font-black tracking-[0.3em] mb-4">
+                    WELCOME TO
+                </p>
+
+                <h1 class="text-5xl md:text-7xl font-black mb-6">
+                    CAT
+                    <span class="text-fuchsia-500">
+                        WORLD
+                    </span>
+                </h1>
+
+                <p class="max-w-2xl mx-auto text-slate-300 text-lg md:text-xl mb-10">
+                    โลกแห่งเกมแมวสุดป่วน!
+                    เลือกเกมที่ชอบ แล้วมาพิสูจน์ฝีมือกันเลย
+                </p>
+
+                <div class="flex flex-wrap justify-center gap-4">
+
+                    <a href="cat-pop.html"
+                       class="btn-pink">
+                        🐱 PLAY CAT POP!
+                    </a>
+
+                    <a href="cat-vs-mouse.html"
+                       class="btn-cyan">
+                        🐭 PLAY CAT VS MOUSE
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- GAME CARDS -->
+
+        <section class="max-w-6xl mx-auto px-6 py-20">
+
+            <div class="text-center mb-12">
+
+                <p class="text-yellow-400 font-bold uppercase tracking-widest">
+                    Choose Your Game
+                </p>
+
+                <h2 class="text-4xl font-black mt-2">
+                    🎮 PICK A GAME
+                </h2>
+
+            </div>
+
+
+            <div class="grid md:grid-cols-2 gap-8">
+
+                <!-- CAT POP -->
+
+                <article class="game-card pink-card">
+
+                    <div class="text-7xl mb-6">
+                        🐱
+                    </div>
+
+                    <span class="game-tag pink-tag">
+                        REFLEX GAME
+                    </span>
+
+                    <h3 class="text-3xl font-black mt-4 mb-4">
+                        Cat Pop!
+                    </h3>
+
+                    <p class="text-slate-300 mb-8">
+                        แมวจะโผล่มาแบบสุ่ม!
+                        คลิกให้เร็วที่สุดเพื่อทำคะแนน
+                        และพยายามสร้าง Combo ให้ได้สูงที่สุด
+                    </p>
+
+                    <a href="cat-pop.html"
+                       class="btn-pink inline-block">
+                        PLAY NOW →
+                    </a>
+
+                </article>
+
+
+                <!-- CAT VS MOUSE -->
+
+                <article class="game-card cyan-card">
+
+                    <div class="text-7xl mb-6">
+                        🐱🐭
+                    </div>
+
+                    <span class="game-tag cyan-tag">
+                        ACTION GAME
+                    </span>
+
+                    <h3 class="text-3xl font-black mt-4 mb-4">
+                        Cat vs Mouse
+                    </h3>
+
+                    <p class="text-slate-300 mb-8">
+                        ควบคุมเจ้าแมวด้วย WASD
+                        หรือปุ่มลูกศร แล้วไล่จับหนู
+                        ให้ได้ครบก่อนหมดเวลา!
+                    </p>
+
+                    <a href="cat-vs-mouse.html"
+                       class="btn-cyan inline-block">
+                        PLAY NOW →
+                    </a>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- FEATURES -->
+
+        <section class="bg-slate-900 border-y border-fuchsia-500/20">
+
+            <div class="max-w-6xl mx-auto px-6 py-20">
+
+                <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-6 text-center">
+
+                    <div class="feature-box">
+                        <div class="text-4xl mb-3">⚡</div>
+                        <h3 class="font-black">Fast</h3>
+                        <p class="text-sm text-slate-400">
+                            เกมเล่นง่ายและรวดเร็ว
+                        </p>
+                    </div>
+
+                    <div class="feature-box">
+                        <div class="text-4xl mb-3">🏆</div>
+                        <h3 class="font-black">Score</h3>
+                        <p class="text-sm text-slate-400">
+                            มีระบบคะแนน
+                        </p>
+                    </div>
+
+                    <div class="feature-box">
+                        <div class="text-4xl mb-3">🎮</div>
+                        <h3 class="font-black">Keyboard</h3>
+                        <p class="text-sm text-slate-400">
+                            รองรับการควบคุมด้วยคีย์บอร์ด
+                        </p>
+                    </div>
+
+                    <div class="feature-box">
+                        <div class="text-4xl mb-3">🔥</div>
+                        <h3 class="font-black">Challenge</h3>
+                        <p class="text-sm text-slate-400">
+                            ท้าทายคะแนนของตัวเอง
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer class="bg-slate-950 py-8 text-center text-slate-500">
+
+        <p>
+            🐾 CAT WORLD © 2026
+        </p>
+
+        <p class="text-sm mt-2">
+            Made with Tailwind CSS & JavaScript
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>

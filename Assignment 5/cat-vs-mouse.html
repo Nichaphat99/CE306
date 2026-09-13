@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CAT VS MOUSE | CAT WORLD</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: "class"
+        };
+    </script>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body class="bg-slate-950 text-white min-h-screen">
+
+    <!-- NAVBAR -->
+
+    <nav class="bg-slate-900 border-b border-cyan-500/30">
+
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+
+            <a href="index.html"
+               class="text-2xl font-black text-cyan-400">
+                🐾 CAT WORLD
+            </a>
+
+            <a href="index.html"
+               class="text-slate-300 hover:text-cyan-400">
+                ← Home
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <main class="max-w-5xl mx-auto px-6 py-10">
+
+
+        <!-- TITLE -->
+
+        <header class="text-center mb-8">
+
+            <p class="text-cyan-400 font-black tracking-widest">
+                ACTION GAME
+            </p>
+
+            <h1 class="text-5xl font-black mt-2">
+                🐱 CAT <span class="text-cyan-400">VS</span> 🐭 MOUSE
+            </h1>
+
+            <p class="text-slate-400 mt-3">
+                ไล่จับหนูให้ครบก่อนหมดเวลา!
+            </p>
+
+        </header>
+
+
+        <!-- SCORE -->
+
+        <section class="grid grid-cols-3 gap-4 mb-6">
+
+            <div class="stat-box">
+
+                <p class="stat-label">
+                    SCORE
+                </p>
+
+                <p id="mouseScore"
+                   class="stat-value text-cyan-400">
+                    0
+                </p>
+
+            </div>
+
+
+            <div class="stat-box">
+
+                <p class="stat-label">
+                    MICE
+                </p>
+
+                <p id="mouseCount"
+                   class="stat-value text-yellow-400">
+                    0 / 5
+                </p>
+
+            </div>
+
+
+            <div class="stat-box">
+
+                <p class="stat-label">
+                    TIME
+                </p>
+
+                <p id="mouseTime"
+                   class="stat-value text-fuchsia-400">
+                    60
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- GAME BOARD -->
+
+        <section id="mouseGameBoard"
+                 class="game-board mouse-board">
+
+
+            <!-- START -->
+
+            <div id="mouseStartScreen"
+                 class="absolute inset-0 flex flex-col items-center justify-center bg-slate-950/85 z-20">
+
+                <div class="text-7xl mb-5">
+                    🐱
+                </div>
+
+                <h2 class="text-3xl font-black mb-3">
+                    Catch The Mouse!
+                </h2>
+
+                <p class="text-slate-400 mb-6">
+                    ใช้ WASD หรือปุ่มลูกศรเพื่อบังคับแมว
+                </p>
+
+                <button id="startMouseBtn"
+                        class="btn-cyan">
+                    START GAME
+                </button>
+
+            </div>
+
+
+            <!-- PLAYER -->
+
+            <div id="playerCat"
+                 class="player-cat">
+                🐱
+            </div>
+
+
+            <!-- MOUSE -->
+
+            <div id="targetMouse"
+                 class="target-mouse">
+                🐭
+            </div>
+
+
+            <!-- WIN / LOSE -->
+
+            <div id="mouseGameOver"
+                 class="hidden absolute inset-0 flex items-center justify-center bg-slate-950/90 z-30">
+
+                <div class="text-center">
+
+                    <div id="mouseResultIcon"
+                         class="text-6xl mb-4">
+                        🏆
+                    </div>
+
+                    <h2 id="mouseResultTitle"
+                        class="text-4xl font-black">
+                        YOU WIN!
+                    </h2>
+
+                    <p id="mouseResultText"
+                       class="text-slate-400 mt-3">
+                        จับหนูครบแล้ว!
+                    </p>
+
+                    <button id="restartMouseBtn"
+                            class="btn-cyan mt-6">
+                        PLAY AGAIN
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTROLS -->
+
+        <section class="mt-8 grid md:grid-cols-2 gap-6">
+
+            <div class="control-card">
+
+                <h2 class="font-black text-xl mb-4">
+                    🎮 CONTROLS
+                </h2>
+
+                <div class="flex justify-center gap-2">
+
+                    <kbd>W</kbd>
+                    <kbd>A</kbd>
+                    <kbd>S</kbd>
+                    <kbd>D</kbd>
+
+                </div>
+
+                <p class="text-center text-slate-500 mt-3">
+                    หรือใช้ปุ่ม Arrow
+                </p>
+
+            </div>
+
+
+            <div class="control-card">
+
+                <h2 class="font-black text-xl mb-4">
+                    🎯 MISSION
+                </h2>
+
+                <p class="text-slate-400">
+                    🐭 จับหนูให้ครบ 5 ตัว
+                    <br>
+                    ⏱️ ภายใน 60 วินาที
+                    <br>
+                    🏆 จับครบ = ชนะ
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>

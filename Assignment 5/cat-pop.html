@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CAT POP! | CAT WORLD</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: "class"
+        };
+    </script>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body class="bg-slate-950 text-white min-h-screen">
+
+    <!-- NAVBAR -->
+
+    <nav class="bg-slate-900 border-b border-fuchsia-500/30">
+
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+
+            <a href="index.html"
+               class="text-2xl font-black text-fuchsia-400">
+                🐾 CAT WORLD
+            </a>
+
+            <a href="index.html"
+               class="text-slate-300 hover:text-fuchsia-400">
+                ← Home
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <main class="max-w-5xl mx-auto px-6 py-10">
+
+
+        <!-- TITLE -->
+
+        <header class="text-center mb-8">
+
+            <p class="text-fuchsia-400 font-black tracking-widest">
+                REFLEX GAME
+            </p>
+
+            <h1 class="text-5xl font-black mt-2">
+                🐱 CAT <span class="text-fuchsia-500">POP!</span>
+            </h1>
+
+            <p class="text-slate-400 mt-3">
+                คลิกแมวให้ได้มากที่สุดภายใน 30 วินาที!
+            </p>
+
+        </header>
+
+
+        <!-- SCORE BOARD -->
+
+        <section class="grid grid-cols-3 gap-4 mb-6">
+
+            <div class="stat-box">
+                <p class="stat-label">
+                    SCORE
+                </p>
+
+                <p id="popScore"
+                   class="stat-value text-fuchsia-400">
+                    0
+                </p>
+            </div>
+
+
+            <div class="stat-box">
+
+                <p class="stat-label">
+                    TIME
+                </p>
+
+                <p id="popTime"
+                   class="stat-value text-yellow-400">
+                    30
+                </p>
+
+            </div>
+
+
+            <div class="stat-box">
+
+                <p class="stat-label">
+                    COMBO
+                </p>
+
+                <p id="popCombo"
+                   class="stat-value text-cyan-400">
+                    0
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- GAME -->
+
+        <section class="game-board pop-board"
+                 id="popGameBoard">
+
+            <div id="popStartScreen"
+                 class="absolute inset-0 flex flex-col items-center justify-center bg-slate-950/80 z-20">
+
+                <div class="text-7xl mb-5">
+                    🐱
+                </div>
+
+                <h2 class="text-3xl font-black mb-3">
+                    Ready?
+                </h2>
+
+                <p class="text-slate-400 mb-6">
+                    คลิกแมวให้เร็วที่สุด!
+                </p>
+
+                <button id="startPopBtn"
+                        class="btn-pink">
+                    START GAME
+                </button>
+
+            </div>
+
+
+            <button id="popCat"
+                    class="pop-cat hidden"
+                    aria-label="จับแมว">
+                🐱
+            </button>
+
+
+            <button id="popBomb"
+                    class="pop-bomb hidden"
+                    aria-label="ระเบิด">
+                💣
+            </button>
+
+
+            <div id="popGameOver"
+                 class="hidden absolute inset-0 flex items-center justify-center bg-slate-950/90 z-30">
+
+                <div class="text-center">
+
+                    <div class="text-6xl mb-4">
+                        🏆
+                    </div>
+
+                    <h2 class="text-4xl font-black">
+                        GAME OVER
+                    </h2>
+
+                    <p class="text-slate-400 mt-3">
+                        Your Score
+                    </p>
+
+                    <p id="finalPopScore"
+                       class="text-6xl font-black text-fuchsia-400 my-4">
+                        0
+                    </p>
+
+                    <button id="restartPopBtn"
+                            class="btn-pink">
+                        PLAY AGAIN
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- INFO -->
+
+        <section class="mt-8 grid md:grid-cols-3 gap-4">
+
+            <div class="info-card">
+                🐱
+                <strong>+10</strong>
+                <span>กดแมว</span>
+            </div>
+
+            <div class="info-card">
+                ⭐
+                <strong>Combo</strong>
+                <span>กดติดกันเพื่อเพิ่ม Combo</span>
+            </div>
+
+            <div class="info-card">
+                💣
+                <strong>-20</strong>
+                <span>ห้ามกดระเบิด!</span>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>

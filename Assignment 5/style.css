@@ -1,0 +1,400 @@
+/* ==========================================
+   CAT WORLD
+   Custom CSS
+========================================== */
+
+
+/* ---------- GLOBAL ---------- */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* ---------- HERO ---------- */
+
+.hero-section {
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            rgba(217, 70, 239, 0.25),
+            transparent 35%
+        ),
+        #020617;
+}
+
+
+.bounce-cat {
+    animation: bounceCat 2s infinite;
+}
+
+@keyframes bounceCat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px) rotate(5deg);
+    }
+
+}
+
+
+/* ---------- BUTTONS ---------- */
+
+.btn-pink,
+.btn-cyan,
+.btn-yellow {
+    border: none;
+    border-radius: 12px;
+    padding: 14px 24px;
+    font-weight: 900;
+    display: inline-block;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+
+.btn-pink {
+    background: #d946ef;
+    color: white;
+    box-shadow: 0 0 25px rgba(217, 70, 239, 0.35);
+}
+
+
+.btn-pink:hover {
+    background: #e879f9;
+    transform: translateY(-3px);
+    box-shadow: 0 0 35px rgba(217, 70, 239, 0.6);
+}
+
+
+.btn-cyan {
+    background: #06b6d4;
+    color: #082f49;
+    box-shadow: 0 0 25px rgba(6, 182, 212, 0.3);
+}
+
+
+.btn-cyan:hover {
+    background: #22d3ee;
+    transform: translateY(-3px);
+    box-shadow: 0 0 35px rgba(6, 182, 212, 0.6);
+}
+
+
+.btn-yellow {
+    background: #facc15;
+    color: #422006;
+}
+
+
+.btn-yellow:hover {
+    background: #fde047;
+    transform: translateY(-3px);
+}
+
+
+/* ---------- GAME CARDS ---------- */
+
+.game-card {
+    padding: 40px;
+    border-radius: 24px;
+    border: 1px solid;
+    transition: 0.25s;
+}
+
+
+.game-card:hover {
+    transform: translateY(-8px);
+}
+
+
+.pink-card {
+    background: linear-gradient(
+        145deg,
+        #1e1030,
+        #0f172a
+    );
+
+    border-color: #d946ef;
+}
+
+
+.cyan-card {
+    background: linear-gradient(
+        145deg,
+        #082f49,
+        #0f172a
+    );
+
+    border-color: #06b6d4;
+}
+
+
+/* ---------- TAGS ---------- */
+
+.game-tag {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 900;
+}
+
+
+.pink-tag {
+    background: #d946ef;
+    color: white;
+}
+
+
+.cyan-tag {
+    background: #06b6d4;
+    color: #082f49;
+}
+
+
+/* ---------- FEATURES ---------- */
+
+.feature-box {
+    padding: 24px;
+    border-radius: 18px;
+    background: #0f172a;
+    border: 1px solid #1e293b;
+}
+
+
+/* ---------- STAT BOX ---------- */
+
+.stat-box {
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 16px;
+    padding: 18px;
+    text-align: center;
+}
+
+
+.stat-label {
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.15em;
+    color: #94a3b8;
+}
+
+
+.stat-value {
+    font-size: 30px;
+    font-weight: 900;
+    margin-top: 5px;
+}
+
+
+/* ---------- GAME BOARD ---------- */
+
+.game-board {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    border-radius: 24px;
+    border: 2px solid;
+    background-color: #020617;
+}
+
+
+/* ---------- CAT POP BOARD ---------- */
+
+.pop-board {
+    border-color: #d946ef;
+
+    background-image:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(217, 70, 239, 0.12),
+            transparent 20%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(6, 182, 212, 0.1),
+            transparent 20%
+        );
+}
+
+
+.pop-cat,
+.pop-bomb {
+    position: absolute;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    user-select: none;
+    transform: translate(-50%, -50%);
+}
+
+
+.pop-cat {
+    font-size: 65px;
+    transition: transform 0.1s;
+}
+
+
+.pop-cat:hover {
+    transform: translate(-50%, -50%) scale(1.2);
+}
+
+
+.pop-bomb {
+    font-size: 55px;
+}
+
+
+.pop-cat:focus-visible,
+.pop-bomb:focus-visible {
+    outline: 3px solid #facc15;
+    outline-offset: 5px;
+}
+
+
+/* ---------- INFO CARD ---------- */
+
+.info-card {
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+
+/* ---------- CAT VS MOUSE ---------- */
+
+.mouse-board {
+    border-color: #06b6d4;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(6, 182, 212, 0.05) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            rgba(6, 182, 212, 0.05) 1px,
+            transparent 1px
+        );
+
+    background-size: 40px 40px;
+}
+
+
+.player-cat,
+.target-mouse {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    user-select: none;
+}
+
+
+.player-cat {
+    font-size: 50px;
+    transition: left 0.05s, top 0.05s;
+}
+
+
+.target-mouse {
+    font-size: 45px;
+    transition: left 0.15s, top 0.15s;
+
+    animation: mouseWiggle 0.7s infinite;
+}
+
+
+@keyframes mouseWiggle {
+
+    0%,
+    100% {
+        transform: rotate(-5deg);
+    }
+
+    50% {
+        transform: rotate(5deg);
+    }
+
+}
+
+
+/* ---------- CONTROLS ---------- */
+
+.control-card,
+.guide-card {
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 20px;
+    padding: 30px;
+}
+
+
+kbd {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 45px;
+    height: 45px;
+
+    background: #1e293b;
+    border: 2px solid #475569;
+    border-bottom-width: 4px;
+
+    border-radius: 8px;
+
+    font-weight: 900;
+}
+
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 640px) {
+
+    .game-board {
+        height: 420px;
+    }
+
+    .pop-cat {
+        font-size: 50px;
+    }
+
+    .pop-bomb {
+        font-size: 42px;
+    }
+
+    .player-cat {
+        font-size: 42px;
+    }
+
+    .target-mouse {
+        font-size: 38px;
+    }
+
+}
